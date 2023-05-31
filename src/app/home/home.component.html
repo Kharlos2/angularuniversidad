@@ -7,3 +7,17 @@
 <section class="banner2">
     
 </section>
+<section>
+    <div class="container my-5">
+        <div class="row row-cols-1 row-cols-md-2 g-3">
+            <div class="col" *ngFor="let estudiante of estudiantes">
+                <div class="card h-100 shadow p-4">
+                    <h1>Nombre: {{estudiante.nombre}}</h1>
+                    <h3>Correo: {{estudiante.correo}}</h3>
+                    <h5>Documento: {{estudiante.documento}}</h5>
+                    <h6>Acudiente:{{estudiante.acudiente.nombres}} </h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
