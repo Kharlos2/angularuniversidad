@@ -5,5 +5,4 @@ export interface Estudiante{
     nombre:string,
     documento:string,
     correo:string,
-    acudiente: Acudiente
 }
