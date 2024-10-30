@@ -10,17 +10,21 @@
 <section>
     <div class="container my-5">
         <div class="row row-cols-1 row-cols-md-2 g-3">
-            <div class="col" *ngFor="let estudiante of estudiantes">
-                <div class="card h-100 shadow p-4">
-                    <h1>Nombre: {{estudiante.nombre}}</h1>
-                    <h3>Correo: {{estudiante.correo}}</h3>
-                    <h5>Documento: {{estudiante.documento}}</h5>
-                   
-                </div>
+          <div class="col" *ngFor="let estudiante of estudiantes">
+            <div class="card h-100 shadow p-4">
+              <h1>Nombre: {{ estudiante.nombre }}</h1>
+              <h3>Correo: {{ estudiante.correo }}</h3>
+              <h1>nombre 1</h1>
+              <h5>Documento: {{ estudiante.documento }}</h5>
+              <button (click)="eliminarEstudiante(estudiante.id)" class="btn btn-danger">Eliminar</button>
             </div>
+          </div>
         </div>
-    </div>
+      </div>
 </section>
 <section>
     <app-formulario></app-formulario>
+</section>
+<section>
+    <app-footer></app-footer>
 </section>

@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import {FormGroup, FormBuilder} from '@angular/forms'
+import { EstudianteService } from '../estudiante.service';
+import { Estudiante } from '../interfaces/Estudiante';
 
 @Component({
   selector: 'app-formulario',
@@ -7,21 +9,31 @@ import {FormGroup, FormBuilder} from '@angular/forms'
   styleUrls: ['./formulario.component.css']
 })
 export class FormularioComponent {
+  public formulario: FormGroup;
 
-  public formulario:FormGroup
-
-  public constructor(public fabricaDatos:FormBuilder){
-    this.formulario=this.inicializarFormulario()
+  constructor(private fabricaDatos: FormBuilder, private estudianteService: EstudianteService) {
+    this.formulario = this.inicializarFormulario();
   }
 
-  public inicializarFormulario():FormGroup{
+  public inicializarFormulario(): FormGroup {
     return this.fabricaDatos.group({
-      nombre:['Juan'],
-      correo:[''],
-      documento:['']
-    })
+      nombre: [''],
+      correo: [''],
+      documento: ['']
+    });
   }
 
-  public capturarDatos():void{}
-
+  public capturarDatos(): void {
+    if (this.formulario.valid) {
+      const nuevoEstudiante: Estudiante = {
+        id: Date.now(), 
+        nombre: this.formulario.value.nombre,
+        correo: this.formulario.value.correo,
+        documento: this.formulario.value.documento,
+        acudiente: { id: 0, nombres: '', telefono: '' },
+      };
+      this.estudianteService.agregarEstudiante(nuevoEstudiante);
+      this.formulario.reset();
+    }
+  }
 }
